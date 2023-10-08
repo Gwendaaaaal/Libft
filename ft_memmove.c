@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gholloco <gwendal.hollocou@orange.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/20 16:22:34 by gholloco          #+#    #+#             */
-/*   Updated: 2023/09/21 12:16:04 by gholloco         ###   ########.fr       */
+/*   Created: 2023/09/20 16:28:07 by gholloco          #+#    #+#             */
+/*   Updated: 2023/09/20 21:59:04 by gholloco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(const char *str)
-{
-	int	i;
+#include "libft.h"
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+void	*ft_memmove(void *dest, const void *src, size_t n)
+{
+	char	*ptr;
+
+
+	if (src > dest)
+		ft_memcpy(dest, src, n);
+	else
+	{
+		ptr = (char *) dest;
+		while (n-- > 0)
+			ptr[n] = ((char *) src)[n];
+	}
+	return (dest);
 }
