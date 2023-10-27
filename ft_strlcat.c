@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 04:39:08 by gholloco          #+#    #+#             */
-/*   Updated: 2023/10/07 05:22:03 by marvin           ###   ########.fr       */
+/*   Updated: 2023/10/25 12:01:00 by gholloco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ size_t ft_strlcat(char *dst, const char *src, size_t size)
 
 	i = 0;
 	j = 0;
+	if (size <= 0)
+		return (0); 
 	while (dst[i])
 		i++;
 	while (src[j] && size > 0)

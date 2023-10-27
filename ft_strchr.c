@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gholloco <gwendal.hollocou@orange.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/08 04:00:48 by gholloco          #+#    #+#             */
-/*   Updated: 2023/10/24 14:22:57 by gholloco         ###   ########.fr       */
+/*   Created: 2023/10/08 04:24:54 by gholloco          #+#    #+#             */
+/*   Updated: 2023/10/24 14:22:36 by gholloco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_toupper(int c)
+#include "libft.h"
+
+char	*ft_strchr(const char *s, int c)
 {
-	if (c >= 'a' && c <= 'z')
-		return (c - 32);
-	else
-		return (c);
+	int	i;
+
+	i = 0;
+	while (*(s + i))
+	{
+		if (*(s + i) == c)
+			return ((char *)(s + i));
+		i++;
+	}
+	if (*(s + i) == c)
+		return ((char *)(s + i));
+	return (NULL);
 }
