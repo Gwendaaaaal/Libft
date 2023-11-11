@@ -6,12 +6,12 @@
 /*   By: gholloco <gwendal.hollocou@orange.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 10:59:10 by gholloco          #+#    #+#             */
-/*   Updated: 2023/10/25 12:47:32 by gholloco         ###   ########.fr       */
+/*   Updated: 2023/11/10 15:35:03 by gholloco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <bsd/string.h>
+#include "bsd/string.h"
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
@@ -22,29 +22,19 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	temp = (char *) big;
 	i = 0;
 	found = 0;
-	if (!little)
+	if (ft_strlen(little) == 0)
 		return (temp);
 	while (i < len && big[i])
 	{
-		if (big[i] == little[0])
-		{
-			while (i < len && big[i] == little[found] && big[i])
-			{
-				i++;
-				found++;
-				if ((int) found == ft_strlen(little))
-					return (&temp[i - found]);
-			}
-			found = 0;
+		found = 0;
+		while (i + found < len && big[i + found] == little[found]
+			&& big[i + found] && little[found])
+		{		
+			found++;
+			if (found == ft_strlen(little))
+				return (temp + i);
 		}
 		i++;
 	}
 	return (NULL);
-}
-
-int main()
-{
-	printf("%s\n", ft_strnstr("abcdefghi", "def", 10));
-	printf("%s", strnstr("abcdefghi", "def", 10));
-
 }

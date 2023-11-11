@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gholloco <gwendal.hollocou@orange.fr>      +#+  +:+       +#+        */
+/*   By: gholloco <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/08 05:46:16 by gholloco          #+#    #+#             */
-/*   Updated: 2023/11/08 15:01:15 by gholloco         ###   ########.fr       */
+/*   Created: 2023/11/07 14:08:38 by gholloco          #+#    #+#             */
+/*   Updated: 2023/11/10 15:35:19 by gholloco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	ft_putnbr_fd(int n, int fd)
 {
-	int	i;
+	char			output;
+	long long int	bigint;
 
-	i = 0;
-	while (n > 0 && (s1[i] || s2[i]))
+	bigint = (long long int) n;
+	if (bigint < 0)
 	{
-		if (s1[i] != s2[i])
-			return (((unsigned char) s1[i]) - ((unsigned char) s2[i]));
-		n--;
-		i++;
+		write(fd, "-", 1);
+		bigint = -bigint;
 	}
-	return (0);
+	if (bigint / 10 > 0)
+		ft_putnbr_fd(bigint / 10, fd);
+	output = (bigint % 10) + 48;
+	ft_putchar_fd(output, fd);
 }

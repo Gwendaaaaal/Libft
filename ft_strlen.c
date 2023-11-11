@@ -6,13 +6,15 @@
 /*   By: gholloco <gwendal.hollocou@orange.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:22:34 by gholloco          #+#    #+#             */
-/*   Updated: 2023/09/21 12:16:04 by gholloco         ###   ########.fr       */
+/*   Updated: 2023/11/08 17:24:21 by gholloco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(const char *str)
+#include "libft.h"
+
+size_t	ft_strlen(const char *str)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (str[i])

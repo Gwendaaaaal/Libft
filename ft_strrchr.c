@@ -6,7 +6,7 @@
 /*   By: gholloco <gwendal.hollocou@orange.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 04:24:54 by gholloco          #+#    #+#             */
-/*   Updated: 2023/10/24 14:27:10 by gholloco         ###   ########.fr       */
+/*   Updated: 2023/11/10 16:25:14 by gholloco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,12 @@ char	*ft_strrchr(const char *s, int c)
 {
 	int	i;
 
-	i = ft_strlen(s) - 1;
-	while (*(s + i))
+	i = ft_strlen(s);
+	while (i >= 0)
 	{
-		if (*(s + i) == c)
-			return ((char *)(s + i));
+		if (s[i] == (char) c)
+			return ((char *) s + i);
 		i--;
 	}
-	if (*(s + i) == c)
-		return ((char *)(s + i));
 	return (NULL);
 }

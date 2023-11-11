@@ -6,7 +6,7 @@
 /*   By: gholloco <gwendal.hollocou@orange.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 06:28:09 by gholloco          #+#    #+#             */
-/*   Updated: 2023/10/28 06:30:08 by gholloco         ###   ########.fr       */
+/*   Updated: 2023/11/10 15:06:32 by gholloco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,11 @@ char	*ft_strcpy(char *dest, char *src)
 	return (dest);
 }
 
-char	*ft_strdup(char *src)
+char	*ft_strdup(const char *src)
 {
 	char	*tab;
 
 	tab = NULL;
-	if (src == NULL)
-		return (tab);
 	tab = malloc(sizeof(char) * ft_strlen(src) + 1);
 	if (tab == NULL)
 		return (tab);

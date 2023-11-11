@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gholloco <gwendal.hollocou@orange.fr>      +#+  +:+       +#+        */
+/*   By: gholloco <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/08 05:46:16 by gholloco          #+#    #+#             */
-/*   Updated: 2023/11/08 15:01:15 by gholloco         ###   ########.fr       */
+/*   Created: 2023/11/07 17:57:46 by gholloco          #+#    #+#             */
+/*   Updated: 2023/11/10 15:34:27 by gholloco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	int	i;
+	t_list	*node;
+	t_list	*temp;
 
-	i = 0;
-	while (n > 0 && (s1[i] || s2[i]))
+	if (!lst || !del)
+		return ;
+	node = *lst;
+	while (node)
 	{
-		if (s1[i] != s2[i])
-			return (((unsigned char) s1[i]) - ((unsigned char) s2[i]));
-		n--;
-		i++;
+		temp = node;
+		node = node->next;
+		ft_lstdelone(temp, del);
 	}
-	return (0);
+	*lst = NULL;
 }

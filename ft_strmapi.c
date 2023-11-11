@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gholloco <gwendal.hollocou@orange.fr>      +#+  +:+       +#+        */
+/*   By: gholloco <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/24 14:25:17 by gholloco          #+#    #+#             */
-/*   Updated: 2023/11/10 15:32:55 by gholloco         ###   ########.fr       */
+/*   Created: 2023/11/07 13:26:00 by gholloco          #+#    #+#             */
+/*   Updated: 2023/11/10 15:33:36 by gholloco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t			i;
-	unsigned char	*c1;
-	unsigned char	*c2;
+	int		i;
+	char	*map;
 
+	if (!s || !f)
+		return (NULL);
 	i = 0;
-	c1 = (unsigned char *) s1;
-	c2 = (unsigned char *) s2;
-	if (!n)
-		return (0);
-	while (i < n)
+	map = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (map == NULL)
+		return (NULL);
+	while (s[i])
 	{
-		if (c1[i] != c2[i])
-			return (c1[i] - c2[i]);
+		map[i] = (*f)(i, s[i]);
 		i++;
 	}
-	return (0);
+	map[i] = 0;
+	return (map);
 }

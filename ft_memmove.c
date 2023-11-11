@@ -6,7 +6,7 @@
 /*   By: gholloco <gwendal.hollocou@orange.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:28:07 by gholloco          #+#    #+#             */
-/*   Updated: 2023/10/24 14:23:11 by gholloco         ###   ########.fr       */
+/*   Updated: 2023/11/10 14:53:17 by gholloco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	char	*ptr;
 
+	if (!dest && !src)
+		return (NULL);
 	if (src > dest)
 		ft_memcpy(dest, src, n);
 	else
